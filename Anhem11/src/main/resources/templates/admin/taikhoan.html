@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML with CSS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Editable Table</h2>
+
+    <!-- Table to display data -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows with data will be dynamically loaded here -->
+            <tr th:each="TKService : ${model}">
+                <td>[[${TKService.email}]]</td>
+                <td>[[${TKService.hovaten}]]</td>
+                <td>[[${TKService.anh}]]</td>
+                <td>[[${TKService.diachi}]]</td>
+                <td><button>Edit</button></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <!-- Form for editing data -->
+    <form>
+        <label for="editId">ID:</label>
+        <input type="text" id="editId" name="editId" readonly>
+
+        <label for="editName">Name:</label>
+        <input type="text" id="editName" name="editName">
+
+        <label for="editEmail">Email:</label>
+        <input type="text" id="editEmail" name="editEmail">
+
+        <label for="editRole">Role:</label>
+        <input type="text" id="editRole" name="editRole">
+
+        <button type="button">Save</button>
+    </form>
+
+</body>
+</html>
